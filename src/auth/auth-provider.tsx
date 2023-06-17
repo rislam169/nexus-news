@@ -1,5 +1,6 @@
 import { PropsWithChildren, useState } from "react";
 import { AuthContext, User } from "./auth-context";
+import apiClient from "../api-client";
 
 export function AuthProvider({ children }: PropsWithChildren): JSX.Element {
   const [user, setUser] = useState<User | null>(null);
@@ -22,8 +23,16 @@ export function AuthProvider({ children }: PropsWithChildren): JSX.Element {
     }
   }
 
+  /** Used to logout from the current session */
+  function logout(): void {
+    apiClient.post("logout").then(() => {
+      setToken(null);
+      setUser(null);
+    });
+  }
+
   return (
-    <AuthContext.Provider value={{ user, token, setUser, setToken }}>
+    <AuthContext.Provider value={{ user, token, setUser, setToken, logout }}>
       {children}
     </AuthContext.Provider>
   );

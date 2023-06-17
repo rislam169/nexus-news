@@ -1,6 +1,14 @@
+import { Button } from "@mui/material";
 import { useAuthContext } from "../auth/auth-context";
-import { Navigate } from "react-router-dom";
 
 export default function Profile() {
-  return <div>This is Profile page which is login protected</div>;
+  const { logout } = useAuthContext();
+  return (
+    <div>
+      <p>This is Profile page which is login protected </p>
+      <Button variant="text" onClick={logout}>
+        Log out
+      </Button>
+    </div>
+  );
 }
