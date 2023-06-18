@@ -274,25 +274,25 @@ export function useCustomJs(): void {
       // mySplidejs
       const postslider_class = document.querySelector("#post-carousel");
       if (postslider_class != null) {
-        const postslider = new Splide(postslider_class, {
-          rewind: true,
-          pagination: true,
-          arrows: true,
-          type: "loop",
-          drag: "free",
-          perPage: 3,
-          perMove: 1,
-          gap: 24,
-          breakpoints: {
-            768: {
-              perPage: 2,
-            },
-            500: {
-              perPage: 1,
-            },
-          },
-        });
-        postslider.mount();
+        // const postslider = new Splide(postslider_class, {
+        //   rewind: true,
+        //   pagination: true,
+        //   arrows: true,
+        //   type: "loop",
+        //   drag: "free",
+        //   perPage: 3,
+        //   perMove: 1,
+        //   gap: 24,
+        //   breakpoints: {
+        //     768: {
+        //       perPage: 2,
+        //     },
+        //     500: {
+        //       perPage: 1,
+        //     },
+        //   },
+        // });
+        // postslider.mount();
       }
     };
 
