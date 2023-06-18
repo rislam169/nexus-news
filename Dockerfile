@@ -1,8 +1,6 @@
-FROM node:18.12.1-alpine AS development
-ENV NODE_ENV development
+FROM node:18.12.1-slim
 
 WORKDIR /app
-
 COPY package.json .
 COPY package-lock.json .
 
