@@ -10,9 +10,37 @@ import NewsSection from "./components/feed/news-section";
 import articles from "./components/feed/articles.json";
 import NewsSlider from "./components/feed/news-slider/news-slider";
 import Category from "./components/feed/category/category";
+import { useAppSelector } from "./store/store-helper";
+import { useArticleFetcher } from "./hooks/use-article-fetcher";
+import {
+  articlesSelector,
+  isFetchingArticlesSelector,
+} from "./store/article/article-selector";
+import { Box, CircularProgress } from "@mui/material";
+import { reformatArticles } from "./utils";
 
 function App() {
   useCustomJs();
+  useArticleFetcher();
+
+  const categorizedArticles = reformatArticles(
+    useAppSelector(articlesSelector)
+  );
+  const isFetchingArticles = useAppSelector(isFetchingArticlesSelector);
+
+  if (isFetchingArticles) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
   return (
     <div className="text-gray-700 pt-9 sm:pt-10">
       <Header />
@@ -22,11 +50,15 @@ function App() {
       <main id="content">
         <Category />
 
-        <NewsSection
-          categoryName="Latest News"
-          articles={articles}
-          hasFeatureNews={true}
-        />
+        {Object.entries(categorizedArticles).map((newSection, index) => {
+          return (
+            <NewsSection
+              categoryName={newSection[0]}
+              articles={newSection[1]}
+              hasFeatureNews={index == 0}
+            />
+          );
+        })}
 
         <NewsSlider />
 

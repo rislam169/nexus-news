@@ -39,7 +39,7 @@ type ArticleState = {
 
 const initialState: ArticleState = {
   articles: [],
-  isFetchingArticles: false,
+  isFetchingArticles: true,
 };
 
 /** The return type for fetchArticle if successful */
@@ -54,7 +54,7 @@ export const fetchArticle = createAsyncThunk(
   async (): Promise<FetchArticleResult> => {
     const { data } = await apiClient.get("/articles");
 
-    return { fetchedArticles: data };
+    return { fetchedArticles: data.data };
   }
 );
 
