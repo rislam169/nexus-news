@@ -1,4 +1,4 @@
-import { NewsCardProps } from "./components/feed/featured-news-card";
+import { NewsCardProps } from "./components/feed/news-card";
 import { Article } from "./store/article/article-slice";
 
 /** Alerts user about the upcoming feature where clicked on */
@@ -17,6 +17,8 @@ export function reformatArticles(
       description: article.description,
       category: article.category,
       img: article.image_url,
+      author: article.author,
+      publishDate: article.published_at,
     };
 
     (categorizedArticle[article["category"]] =

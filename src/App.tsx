@@ -6,40 +6,10 @@ import { useCustomJs } from "./hooks/use-custom-js";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import MobileMenu from "./components/mobile-menu/mobile-menu";
-import NewsSection from "./components/feed/news-section";
-import articles from "./components/feed/articles.json";
-import NewsSlider from "./components/feed/news-slider/news-slider";
-import Category from "./components/feed/category/category";
-import { useAppSelector } from "./store/store-helper";
-import { useArticleFetcher } from "./hooks/use-article-fetcher";
-import {
-  articlesSelector,
-  isFetchingArticlesSelector,
-} from "./store/article/article-selector";
-import { Box, CircularProgress } from "@mui/material";
-import { reformatArticles } from "./utils";
+import ArticleSection from "./components/feed/article-section";
 
 function App() {
   useCustomJs();
-  useArticleFetcher();
-
-  const categorizedArticles = reformatArticles(
-    useAppSelector(articlesSelector)
-  );
-  const isFetchingArticles = useAppSelector(isFetchingArticlesSelector);
-
-  if (isFetchingArticles) {
-    return (
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        minHeight="100vh"
-      >
-        <CircularProgress />
-      </Box>
-    );
-  }
 
   return (
     <div className="text-gray-700 pt-9 sm:pt-10">
@@ -48,31 +18,11 @@ function App() {
       <MobileMenu />
 
       <main id="content">
-        <Category />
+        {/* <Category /> */}
 
-        {Object.entries(categorizedArticles).map((newSection, index) => {
-          return (
-            <NewsSection
-              categoryName={newSection[0]}
-              articles={newSection[1]}
-              hasFeatureNews={index == 0}
-            />
-          );
-        })}
+        <ArticleSection />
 
-        <NewsSlider />
-
-        <NewsSection
-          categoryName="Bussiness"
-          articles={articles}
-          hasFeatureNews={false}
-        />
-
-        <NewsSection
-          categoryName="Entertainment"
-          articles={articles}
-          hasFeatureNews={false}
-        />
+        {/* <NewsSlider /> */}
       </main>
 
       <Footer />
