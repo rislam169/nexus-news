@@ -6,6 +6,6 @@ import { fetchArticle } from "../store/article/article-slice";
 export function useArticleFetcher(): void {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchArticle());
+    dispatch(fetchArticle({}));
   }, [dispatch]);
 }

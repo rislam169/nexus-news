@@ -42,6 +42,15 @@ const initialState: ArticleState = {
   isFetchingArticles: true,
 };
 
+/** Properties used to fetch the articles */
+interface FetchArticleProps {
+  /** Category of the article for search */
+  category?: string;
+
+  /** Keyword for searching articles */
+  searchKey?: string;
+}
+
 /** The return type for fetchArticle if successful */
 interface FetchArticleResult {
   /** The articles that were fetched from the backend */
@@ -51,8 +60,13 @@ interface FetchArticleResult {
 /** Fetches articles from the backend so they can be put into the store */
 export const fetchArticle = createAsyncThunk(
   "article/fetchArticle",
-  async (): Promise<FetchArticleResult> => {
-    const { data } = await apiClient.get("/articles");
+  async ({
+    category,
+    searchKey,
+  }: FetchArticleProps): Promise<FetchArticleResult> => {
+    const { data } = await apiClient.get("/articles", {
+      params: { category, searchKey },
+    });
 
     return { fetchedArticles: data.data };
   }

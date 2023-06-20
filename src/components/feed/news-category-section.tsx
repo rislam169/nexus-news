@@ -12,7 +12,8 @@ type Props = {
   hasFeatureNews: boolean;
 };
 
-export default function NewsSection({
+/** Renders all the category with corresponding news articles */
+export default function NewsCategorySection({
   categoryName,
   articles,
   hasFeatureNews,
@@ -36,6 +37,8 @@ export default function NewsSection({
                   description={articles[0].description}
                   category={articles[0].category}
                   img={articles[0].img}
+                  author={articles[0].author}
+                  publishDate={articles[0].publishDate}
                 />
               )}
               {articles.map((article) => (
@@ -44,6 +47,8 @@ export default function NewsSection({
                   description={article.description}
                   category={article.category}
                   img={article.img}
+                  author={article.author}
+                  publishDate={article.publishDate}
                 />
               ))}
             </div>
