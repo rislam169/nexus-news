@@ -4,6 +4,7 @@ import crossIcon from "../../assets/cross.svg";
 import { useDebounce } from "../../hooks/use-debounce";
 import { fetchArticle } from "../../store/article/article-slice";
 import { useAppDispatch } from "../../store/store-helper";
+import { Categories } from "../feed/category/categories";
 
 /** Debounce interval in miliseconds */
 const DEBOUNCE_TIME = 500;
@@ -12,6 +13,10 @@ const DEBOUNCE_TIME = 500;
 export default function Search() {
   const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
   const [searchKey, setSearchKey] = useState<string>("");
+  const [source, setSource] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [fromDate, setFromDate] = useState<string>("");
+  const [toDate, setToDate] = useState<string>("");
 
   const dispatch = useAppDispatch();
   const debouncedSearchKey = useDebounce(searchKey, DEBOUNCE_TIME);
@@ -19,6 +24,18 @@ export default function Search() {
   useEffect(() => {
     dispatch(fetchArticle({ searchKey: debouncedSearchKey }));
   }, [debouncedSearchKey, dispatch]);
+
+  function filterArticles() {
+    dispatch(
+      fetchArticle({
+        searchKey: debouncedSearchKey,
+        source: source,
+        category: selectedCategory,
+        fromDate: fromDate,
+        toDate: toDate,
+      })
+    );
+  }
 
   return (
     <div className="search-dropdown relative h-11">
@@ -31,27 +48,79 @@ export default function Search() {
       <div
         className={`${
           isSearchVisible ? "" : "hidden"
-        } absolute left-auto right-0 top-full z-50 text-left bg-white text-gray-700 border border-gray-100 mt-1 p-3`}
-        style={{ minWidth: "15rem" }}
+        } search_dropdown absolute left-auto right-0 top-full z-50 text-left shadow-2xl bg-white text-black border border-gray-200 mt-1 p-3`}
       >
-        <div className="flex flex-wrap items-stretch w-full relative">
-          <input
-            type="text"
-            className="flex-shrink flex-grow max-w-full leading-5 w-px flex-1 relative py-2 px-5 text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
-            name="text"
-            placeholder="Search..."
-            aria-label="search"
-            value={searchKey ?? ""}
-            onChange={({ target }) => setSearchKey(target.value)}
-          />
-          <div className="flex -mr-px">
-            <button
-              className="flex items-center py-2 px-5 ml-1 leading-5 text-gray-100 rounded focus:outline-none focus:ring-0 hover:bg-gray-200"
-              type="submit"
+        <div className="flex flex-row flex-wrap w-full relative">
+          <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
+            <label htmlFor="from_date">From</label>
+            <input
+              type="date"
+              id="from_date"
+              className="w-full p-1 border-b-2 rounded text-black  border border-gray-400 shadow-sm overflow-x-auto"
+              placeholder="From Date"
+              aria-label="fromDate"
+              value={fromDate}
+              onChange={({ target }) => setFromDate(target.value)}
+            />
+          </span>
+          <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
+            <label htmlFor="to_date">To</label>
+            <input
+              type="date"
+              id="to_date"
+              className="w-full p-1 border-b-2 rounded text-black  border border-gray-400 shadow-sm overflow-x-auto"
+              placeholder="To Date"
+              aria-label="toDate"
+              value={toDate}
+              onChange={({ target }) => setToDate(target.value)}
+            />
+          </span>
+          <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
+            <label htmlFor="category">Category</label>
+            <select
+              id="category"
+              className="w-full p-1 border-b-2 rounded text-black  border border-gray-400 shadow-sm overflow-x-auto"
+              value={selectedCategory}
+              onChange={({ target }) => setSelectedCategory(target.value)}
             >
-              <img src={searchIcon} alt="Search" />
+              {Categories.map((category) => (
+                <option value={category.title}>{category.title}</option>
+              ))}
+            </select>
+          </span>
+
+          <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
+            <label htmlFor="source">Source</label>
+            <input
+              id="source"
+              type="text"
+              className="w-full p-1 border-b-2 rounded text-black  border border-gray-400 shadow-sm overflow-x-auto"
+              placeholder="Source"
+              aria-label="source"
+              value={source}
+              onChange={({ target }) => setSource(target.value)}
+            />
+          </span>
+          <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
+            <label htmlFor="search">Search</label>
+            <input
+              type="text"
+              id="search"
+              className="w-full p-1 border-b-2 rounded text-black  border border-gray-400 shadow-sm overflow-x-auto"
+              placeholder=" Search..."
+              aria-label="search"
+              value={searchKey}
+              onChange={({ target }) => setSearchKey(target.value)}
+            />
+          </span>
+          <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
+            <button
+              onClick={filterArticles}
+              className="border-b-2 p-1 mt-6 rounded focus:outline-none text-white bg-red-500 hover:bg-red-700"
+            >
+              Search
             </button>
-          </div>
+          </span>
         </div>
       </div>
     </div>

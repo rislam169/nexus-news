@@ -140,3 +140,7 @@ body {
   height: 220px;
   object-fit: cover;
 }
+
+.search_dropdown {
+  width: 50vw;
+}

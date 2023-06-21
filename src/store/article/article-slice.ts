@@ -49,6 +49,15 @@ interface FetchArticleProps {
 
   /** Keyword for searching articles */
   searchKey?: string;
+
+  /** Keyword for searching articles */
+  source?: string;
+
+  /** Keyword for searching articles */
+  fromDate?: string;
+
+  /** Keyword for searching articles */
+  toDate?: string;
 }
 
 /** The return type for fetchArticle if successful */
@@ -63,9 +72,12 @@ export const fetchArticle = createAsyncThunk(
   async ({
     category,
     searchKey,
+    source,
+    fromDate,
+    toDate,
   }: FetchArticleProps): Promise<FetchArticleResult> => {
     const { data } = await apiClient.get("/articles", {
-      params: { category, searchKey },
+      params: { category, searchKey, source, fromDate, toDate },
     });
 
     return { fetchedArticles: data.data };
