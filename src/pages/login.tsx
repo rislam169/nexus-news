@@ -12,8 +12,11 @@ import { FormEvent, MutableRefObject, useRef, useState } from "react";
 import { useAuthContext } from "../auth/auth-context";
 import apiClient from "../api-client";
 import { Alert } from "@mui/material";
+import Header from "../components/header/header";
+import { useCustomJs } from "../hooks/use-custom-js";
 
-export default function Signin(): JSX.Element {
+export default function Login(): JSX.Element {
+  useCustomJs();
   const emailRef = useRef() as MutableRefObject<HTMLInputElement>;
   const passwordRef = useRef() as MutableRefObject<HTMLInputElement>;
   const [errors, setErrors] = useState<any>(null);
@@ -44,6 +47,7 @@ export default function Signin(): JSX.Element {
 
   return (
     <Container component="main" maxWidth="sm">
+      <Header />
       <Box
         sx={{
           boxShadow: 3,
@@ -57,7 +61,7 @@ export default function Signin(): JSX.Element {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign in
+          Log in
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           {errors &&
@@ -101,7 +105,7 @@ export default function Signin(): JSX.Element {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Login In
           </Button>
           <Grid container>
             <Grid item xs>

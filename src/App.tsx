@@ -5,7 +5,6 @@ import upArrowIcon from "./assets/up-arrow.svg";
 import { useCustomJs } from "./hooks/use-custom-js";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
-import MobileMenu from "./components/mobile-menu/mobile-menu";
 import ArticleSection from "./components/feed/article-section";
 
 function App() {
@@ -14,8 +13,6 @@ function App() {
   return (
     <div className="text-gray-700 pt-9 sm:pt-10">
       <Header />
-
-      <MobileMenu />
 
       <main id="content">
         {/* <Category /> */}

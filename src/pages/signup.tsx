@@ -10,6 +10,7 @@ import { FormEvent, MutableRefObject, useRef, useState } from "react";
 import apiClient from "../api-client";
 import { useAuthContext } from "../auth/auth-context";
 import { Alert } from "@mui/material";
+import Header from "../components/header/header";
 
 export default function Signup(): JSX.Element {
   const nameRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -47,6 +48,7 @@ export default function Signup(): JSX.Element {
 
   return (
     <Container component="main" maxWidth="sm">
+      <Header />
       <Box
         sx={{
           boxShadow: 3,
@@ -124,7 +126,7 @@ export default function Signup(): JSX.Element {
             <Grid item xs></Grid>
             <Grid item>
               <Link component={NavLink} to="/signin" variant="body2">
-                {"Already have an account? Sign In"}
+                {"Already have an account? Log In"}
               </Link>
             </Grid>
           </Grid>

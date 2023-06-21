@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Signin from "../pages/signin";
+import Login from "../pages/login";
 import Signup from "../pages/signup";
 import NewsFeed from "../pages/news-feed";
-import Profile from "../pages/profile";
 import AuthenticatedLayouts from "../components/layouts/authenticated-layouts";
 import UnAuthenticatedLayouts from "../components/layouts/unauthenticated-layouts";
 import NotFound from "../pages/not-found";
+import { Profile } from "../pages/profiles";
 
 export const router = createBrowserRouter([
   {
@@ -42,8 +42,8 @@ export const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/signin",
-        element: <Signin />,
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

@@ -5,7 +5,7 @@ export default function AuthenticatedLayouts() {
   const { token } = useAuthContext();
 
   if (!token) {
-    return <Navigate to="/signin" />;
+    return <Navigate to="/login" />;
   }
 
   return (
