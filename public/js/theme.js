@@ -184,46 +184,6 @@
     }
   };
 
-  // Mobile menu close
-  const myMobile = function () {
-    var x = document.querySelectorAll(".back-menu");
-    if (x != null) {
-      for (var v = 0; v < x.length; v++) {
-        x[v].addEventListener("click", function () {
-          var y = document.getElementsByClassName("side-menu");
-          for (var i = 0; i < y.length; i++) {
-            y[i].classList.remove("show");
-          }
-
-          var b = document.querySelectorAll(".side-area");
-          for (var i = 0; i < b.length; i++) {
-            b[i].classList.remove("show");
-          }
-        });
-      }
-    }
-  };
-
-  // Mobile menu open
-  const myOpen = function () {
-    var x = document.querySelectorAll(".menu-mobile");
-    if (x != null) {
-      for (var z = 0; z < x.length; z++) {
-        x[z].addEventListener("click", function () {
-          var y = document.getElementsByClassName("side-menu");
-          for (var i = 0; i < y.length; i++) {
-            y[i].classList.add("show");
-          }
-
-          var b = document.querySelectorAll(".side-area");
-          for (var i = 0; i < b.length; i++) {
-            b[i].classList.add("show");
-          }
-        });
-      }
-    }
-  };
-
   // Lightbox
   const myLightbox = function () {
     // GLightbox
@@ -307,8 +267,6 @@
   myPreloader();
   mySticky();
   myDropdown();
-  myMobile();
-  myOpen();
   myLightbox();
   mySplidejs();
   mySplidevideo();
