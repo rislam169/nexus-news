@@ -26,3 +26,22 @@ export function reformatArticles(
     return categorizedArticle;
   }, {});
 }
+
+/** Creates initial for name */
+export function createInitial(name: string): string {
+  return name
+    .split(" ")
+    .map((str) => str[0])
+    .join("");
+}
+
+/** Converts string to array trimming invidual string*/
+export function stringToArray(
+  text: string,
+  separator: string
+): string[] | null {
+  if (!text) {
+    return null;
+  }
+  return text.split(separator).map((item) => item.replace(/ /g, ""));
+}
