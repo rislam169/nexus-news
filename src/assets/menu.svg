@@ -1,15 +1,1 @@
-<svg
-  className="inline-block h-6 w-6 mr-2"
-  xmlns="http://www.w3.org/2000/svg"
-  fill="none"
-  viewBox="0 0 24 24"
-  fill="#ffffff"
-  aria-hidden="true"
->
-  <path
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    stroke-width="2"
-    d="M4 6h16M4 12h16M4 18h16"
-  ></path>
-</svg>
+<svg width="24" height="24" viewBox="0 0 0.48 0.48" xmlns="http://www.w3.org/2000/svg"><path d="M.48.15H0V.12h.48v.03zm0 .24H0V.36h.48v.03zm0-.12H0V.24h.48v.03z"/></svg>

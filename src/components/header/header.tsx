@@ -31,8 +31,7 @@ export default function Header() {
                     type="button"
                     className="menu-mobile block py-3 px-6 border-b-2 border-transparent"
                   >
-                    <span className="sr-only">Mobile menu</span>
-                    <img src={menuIcon} alt="Menu" /> Menu
+                    <img src={menuIcon} alt="Menu" />
                   </button>
                 </div>
               </div>
