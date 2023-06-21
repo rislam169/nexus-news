@@ -12,6 +12,12 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [
+      {
+        path: "/articles/:category",
+        element: <App />,
+      },
+    ],
   },
   {
     path: "/newsfeed",

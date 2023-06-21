@@ -191,28 +191,6 @@ export function useCustomJs(): void {
       if (ef != null) {
         onekit_submenu();
       }
-
-      // Search dropdown
-      const search_dropdown = function search_dropdown() {
-        const search_dropa: any = document.querySelectorAll(
-          ".search-dropdown > button"
-        );
-
-        const _loop = function _loop(i: any) {
-          search_dropa[i].addEventListener("click", function (event: any) {
-            event.stopPropagation();
-            event.preventDefault();
-
-            search_dropa[i]?.nextElementSibling?.classList.toggle("show");
-            search_dropa[i]?.parentNode?.classList?.toggle("show");
-          });
-        };
-
-        for (let i = 0; i < search_dropa.length; i++) {
-          _loop(i);
-        }
-      };
-      search_dropdown();
     };
 
     // Mobile menu close

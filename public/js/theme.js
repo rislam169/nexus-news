@@ -182,29 +182,6 @@
     if (ef != null) {
       onekit_submenu();
     }
-
-    // Search dropdown
-    const search_dropdown = function search_dropdown() {
-      var search_dropa = document.querySelectorAll(".search-dropdown > button");
-      var search_menu_x = document.querySelectorAll(
-        ".search-dropdown > .dropdown-menu"
-      );
-
-      var _loop = function _loop(i) {
-        search_dropa[i].addEventListener("click", function (event) {
-          event.stopPropagation();
-          event.preventDefault();
-
-          search_dropa[i].nextElementSibling.classList.toggle("show");
-          search_dropa[i].parentNode.classList.toggle("show");
-        });
-      };
-
-      for (var i = 0; i < search_dropa.length; i++) {
-        _loop(i);
-      }
-    };
-    search_dropdown();
   };
 
   // Mobile menu close

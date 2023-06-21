@@ -6,13 +6,11 @@ import { useCustomJs } from "./hooks/use-custom-js";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import MobileMenu from "./components/mobile-menu/mobile-menu";
-import NewsSection from "./components/feed/news-section";
-import articles from "./components/feed/articles.json";
-import NewsSlider from "./components/feed/news-slider/news-slider";
-import Category from "./components/feed/category/category";
+import ArticleSection from "./components/feed/article-section";
 
 function App() {
   useCustomJs();
+
   return (
     <div className="text-gray-700 pt-9 sm:pt-10">
       <Header />
@@ -20,27 +18,11 @@ function App() {
       <MobileMenu />
 
       <main id="content">
-        <Category />
+        {/* <Category /> */}
 
-        <NewsSection
-          categoryName="Latest News"
-          articles={articles}
-          hasFeatureNews={true}
-        />
+        <ArticleSection />
 
-        <NewsSlider />
-
-        <NewsSection
-          categoryName="Bussiness"
-          articles={articles}
-          hasFeatureNews={false}
-        />
-
-        <NewsSection
-          categoryName="Entertainment"
-          articles={articles}
-          hasFeatureNews={false}
-        />
+        {/* <NewsSlider /> */}
       </main>
 
       <Footer />

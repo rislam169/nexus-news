@@ -1,23 +1,11 @@
 import { featureOnDevelopment } from "../../utils";
-
-export type NewsCardProps = {
-  /** Title of the news */
-  title: string;
-
-  /** Short description of the news */
-  description?: string;
-
-  /** Category of the news */
-  category: string;
-
-  /** Image url display in the card */
-  img: string;
-};
+import { NewsCardProps } from "./news-card";
 
 export default function FeaturedNewsCard({
   title,
   description,
-  category,
+  author,
+  publishDate,
   img,
 }: NewsCardProps) {
   return (
@@ -41,9 +29,12 @@ export default function FeaturedNewsCard({
           <p className="text-gray-100 hidden sm:inline-block">{description}</p>
           {/* <!-- author and date --> */}
           <div className="pt-2">
-            <div className="text-gray-100">
-              <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
-              {category}
+            <div className="text-gray-100 flex items-center">
+              <span className="inline-block h-10 border-l-2 border-red-600 mr-2"></span>
+              <div className="flex flex-col">
+                <span>By {author.substring(0, 30)}</span>
+                <span> {publishDate}</span>
+              </div>
             </div>
           </div>
         </div>

@@ -34,22 +34,6 @@ body {
   border-color: #ce2626;
 }
 /*Dropdown*/
-.dropdown-menu {
-  display: none;
-}
-.dropdown-menu.show {
-  display: block;
-}
-.search-dropdown > .dropdown-menu.show {
-  display: block;
-}
-.search-dropdown.show .open,
-.search-dropdown .close {
-  display: none;
-}
-.search-dropdown.show .close {
-  display: block;
-}
 @media (min-width: 1024px) {
   .navbar .dropdown-menu.show {
     display: none;
@@ -149,4 +133,14 @@ body {
 .splide__slide img {
   width: 100%;
   height: auto;
+}
+
+.article-item a img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.search_dropdown {
+  width: 50vw;
 }
