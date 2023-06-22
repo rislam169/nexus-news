@@ -19,6 +19,7 @@ export function reformatArticles(
       img: article.image_url,
       author: article.author,
       publishDate: article.published_at,
+      url: article.url,
     };
 
     (categorizedArticle[article["category"]] =

@@ -50,13 +50,13 @@ interface FetchArticleProps {
   /** Keyword for searching articles */
   searchKey?: string;
 
-  /** Keyword for searching articles */
+  /** source for searching articles */
   source?: string;
 
-  /** Keyword for searching articles */
+  /** From Date for searching articles */
   fromDate?: string;
 
-  /** Keyword for searching articles */
+  /** To Date for searching articles */
   toDate?: string;
 }
 

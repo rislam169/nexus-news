@@ -39,6 +39,7 @@ export default function NewsCategorySection({
                   img={articles[0].img}
                   author={articles[0].author}
                   publishDate={articles[0].publishDate}
+                  url={articles[0].url}
                 />
               )}
               {articles.map((article) => (
@@ -49,6 +50,7 @@ export default function NewsCategorySection({
                   img={article.img}
                   author={article.author}
                   publishDate={article.publishDate}
+                  url={article.url}
                 />
               ))}
             </div>
