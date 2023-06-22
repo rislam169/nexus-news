@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import {
   articlesSelector,
   isFetchingArticlesSelector,
@@ -13,6 +13,7 @@ export default function ArticleSection() {
   const categorizedArticles = reformatArticles(
     useAppSelector(articlesSelector)
   );
+  const categorizedArticleList = Object.entries(categorizedArticles);
   const isFetchingArticles = useAppSelector(isFetchingArticlesSelector);
 
   if (isFetchingArticles) {
@@ -21,16 +22,29 @@ export default function ArticleSection() {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh"
+        minHeight="90vh"
       >
         <CircularProgress />
       </Box>
     );
   }
 
+  if (categorizedArticleList.length === 0) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="80vh"
+      >
+        <Typography variant="h4">No articles found to display</Typography>
+      </Box>
+    );
+  }
+
   return (
     <>
-      {Object.entries(categorizedArticles).map((newSection, index) => {
+      {categorizedArticleList.map((newSection, index) => {
         return (
           <NewsCategorySection
             categoryName={newSection[0]}
