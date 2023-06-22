@@ -44,6 +44,7 @@ export default function NewsCategorySection({
               )}
               {articles.map((article) => (
                 <NewsCard
+                  key={Math.random()}
                   title={article.title}
                   description={article.description}
                   category={article.category}

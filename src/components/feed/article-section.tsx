@@ -47,6 +47,7 @@ export default function ArticleSection() {
       {categorizedArticleList.map((newSection, index) => {
         return (
           <NewsCategorySection
+            key={index}
             categoryName={newSection[0]}
             articles={newSection[1]}
             hasFeatureNews={index == 0}

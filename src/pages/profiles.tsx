@@ -24,7 +24,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { Categories } from "../components/feed/category/categories";
+import { Categories } from "../categories";
 import Header from "../components/header/header";
 
 const ITEM_HEIGHT = 48;

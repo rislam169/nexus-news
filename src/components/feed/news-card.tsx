@@ -21,6 +21,12 @@ export type NewsCardProps = {
   url: string;
 };
 
+function onImageLoadError(event: any) {
+  event.target.onerror = null;
+  event.target.src =
+    "https://i.kinja-img.com/gawker-media/image/upload/c_fit,f_auto,g_center,q_60,w_1315/368e6ab3b30c5b914434afdbe72268b6.jpg";
+}
+
 export default function NewsCard({
   title,
   description,
@@ -33,7 +39,12 @@ export default function NewsCard({
     <div className="flex-shrink max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
       <div className="sm:block hover-img article-item">
         <a href={url} target="_blank">
-          <img className="max-w-full w-full mx-auto" src={img} alt={title} />
+          <img
+            className="max-w-full w-full mx-auto"
+            src={img}
+            alt={title}
+            onError={onImageLoadError}
+          />
         </a>
         <div className="py-0 sm:py-3 pl-3 sm:pl-0">
           <h3 className="text-lg font-bold leading-tight mb-2">

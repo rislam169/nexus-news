@@ -18,8 +18,6 @@ function App() {
         {/* <Category /> */}
 
         <ArticleSection />
-
-        {/* <NewsSlider /> */}
       </main>
 
       <Footer />

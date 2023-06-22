@@ -2,12 +2,6 @@ import { useEffect } from "react";
 
 export function useCustomJs(): void {
   useEffect(() => {
-    /**
-     * ------------------------------------------------------------------------
-     * Functions
-     * ------------------------------------------------------------------------
-     */
-
     // Back to top button
     const myBacktotop = function () {
       // browser window scroll
@@ -133,31 +127,6 @@ export function useCustomJs(): void {
       });
     };
 
-    // Preloader
-    const myPreloader = function () {
-      const xpre = document.querySelector(".preloader");
-      if (xpre != null) {
-        window.addEventListener("load", function () {
-          document?.querySelector("body")?.classList.add("loaded-success");
-        });
-      }
-    };
-
-    // Sticky element
-    const mySticky = function () {
-      // sticky
-      const stickys = document.querySelectorAll(".sticky");
-      if (stickys != null) {
-        for (let i = 0; i < stickys.length; i++) {
-          new hcSticky(stickys[i], {
-            stickTo: stickys[i].parentNode,
-            top: 28,
-            bottomEnd: 0,
-          });
-        }
-      }
-    };
-
     // Sub Dropdown
     const myDropdown = function () {
       // submenu
@@ -233,79 +202,6 @@ export function useCustomJs(): void {
       }
     };
 
-    // Lightbox
-    const myLightbox = function () {
-      // GLightbox
-      const lightbox_class = document.querySelector(".glightbox3");
-      if (lightbox_class != null) {
-        const lightbox = GLightbox({
-          selector: ".glightbox3",
-          touchNavigation: true,
-          loop: true,
-          autoplayVideos: true,
-        });
-      }
-    };
-
-    // splidejs
-    const mySplidejs = function () {
-      // mySplidejs
-      const postslider_class = document.querySelector("#post-carousel");
-      if (postslider_class != null) {
-        // const postslider = new Splide(postslider_class, {
-        //   rewind: true,
-        //   pagination: true,
-        //   arrows: true,
-        //   type: "loop",
-        //   drag: "free",
-        //   perPage: 3,
-        //   perMove: 1,
-        //   gap: 24,
-        //   breakpoints: {
-        //     768: {
-        //       perPage: 2,
-        //     },
-        //     500: {
-        //       perPage: 1,
-        //     },
-        //   },
-        // });
-        // postslider.mount();
-      }
-    };
-
-    // splide video
-    const mySplidevideo = function () {
-      // mySplidevideo
-      const postvideo_class = document.querySelector("#main-carousel");
-      if (postvideo_class != null) {
-        const postvideo = new Splide("#main-carousel", {
-          type: "fade",
-          rewind: true,
-          pagination: false,
-          arrows: false,
-        });
-
-        const thumbnails = new Splide("#thumbnail-carousel", {
-          fixedWidth: 150,
-          fixedHeight: 120,
-          gap: 24,
-          rewind: true,
-          pagination: false,
-          isNavigation: true,
-        });
-
-        postvideo.sync(thumbnails);
-        postvideo.mount(window.splide.Extensions);
-        thumbnails.mount();
-      }
-    };
-
-    // Custom JS
-    const myCustom = function () {
-      // insert your javascript in here
-    };
-
     /**
      * ------------------------------------------------------------------------
      * Launch Functions
@@ -313,14 +209,8 @@ export function useCustomJs(): void {
      */
 
     myBacktotop();
-    myPreloader();
-    mySticky();
     myDropdown();
     myMobile();
     myOpen();
-    myLightbox();
-    mySplidejs();
-    mySplidevideo();
-    myCustom();
   }, []);
 }

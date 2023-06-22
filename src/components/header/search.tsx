@@ -4,7 +4,7 @@ import crossIcon from "../../assets/cross.svg";
 import { useDebounce } from "../../hooks/use-debounce";
 import { fetchArticle } from "../../store/article/article-slice";
 import { useAppDispatch } from "../../store/store-helper";
-import { Categories } from "../feed/category/categories";
+import { Categories } from "../../categories";
 
 /** Debounce interval in miliseconds */
 const DEBOUNCE_TIME = 500;
@@ -107,7 +107,9 @@ export default function Search() {
               onChange={({ target }) => setSelectedCategory(target.value)}
             >
               {Categories.map((category) => (
-                <option value={category.title}>{category.title}</option>
+                <option key={category.title} value={category.title}>
+                  {category.title}
+                </option>
               ))}
             </select>
           </span>

@@ -1,5 +1,5 @@
 import crossIcon from "../../assets/cross.svg";
-import { Categories } from "../feed/category/categories";
+import { Categories } from "../../categories";
 import NavItem from "../header/nav-item";
 
 export default function MobileMenu() {
@@ -26,7 +26,7 @@ export default function MobileMenu() {
             <ul id="side-menu" className="w-full float-none flex flex-col">
               <NavItem label={"Home"} />
               {Categories.map((item) => (
-                <NavItem label={item.title} />
+                <NavItem label={item.title} key={item.title} />
               ))}
             </ul>
           </nav>

@@ -1,6 +1,6 @@
 import menuIcon from "../../assets/menu.svg";
 import NavItem from "./nav-item";
-import { Categories } from "../feed/category/categories";
+import { Categories } from "../../categories";
 import Search from "./search";
 import ProfileDropdown from "./profile-dropdown";
 import { Hidden } from "@mui/material";
@@ -24,11 +24,10 @@ export default function Header() {
               </Hidden>
 
               <div className="flex flex-row h-11">
-                {/* <!-- nav menu --> */}
                 <ul className="navbar hidden lg:flex lg:flex-row text-black text-sm items-center font-bold">
                   <NavItem label={"Home"} />
                   {Categories.map((item) => (
-                    <NavItem label={item.title} />
+                    <NavItem label={item.title} key={Math.random()} />
                   ))}
                 </ul>
 

@@ -76,7 +76,7 @@ export const fetchArticle = createAsyncThunk(
     fromDate,
     toDate,
   }: FetchArticleProps): Promise<FetchArticleResult> => {
-    const { data } = await apiClient.get("/articles", {
+    const { data } = await apiClient.post("/articles", {
       params: { category, searchKey, source, fromDate, toDate },
     });
 
@@ -97,7 +97,7 @@ const articleSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchArticle.pending, (state, action) => {
+      .addCase(fetchArticle.pending, (state) => {
         state.isFetchingArticles = true;
       })
       .addCase(fetchArticle.fulfilled, (state, action) => {
