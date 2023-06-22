@@ -25,7 +25,7 @@ export default function Search() {
     dispatch(fetchArticle({ searchKey: debouncedSearchKey }));
   }, [debouncedSearchKey, dispatch]);
 
-  function filterArticles() {
+  function filterArticles(): void {
     dispatch(
       fetchArticle({
         searchKey: debouncedSearchKey,
@@ -35,6 +35,14 @@ export default function Search() {
         toDate: toDate,
       })
     );
+  }
+
+  function clearSearch(): void {
+    setSource("");
+    setSelectedCategory("");
+    setFromDate("");
+    setToDate("");
+    filterArticles();
   }
 
   return (
@@ -88,7 +96,6 @@ export default function Search() {
               ))}
             </select>
           </span>
-
           <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
             <label htmlFor="source">Source</label>
             <input
@@ -113,12 +120,18 @@ export default function Search() {
               onChange={({ target }) => setSearchKey(target.value)}
             />
           </span>
-          <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
+          <span className="flex flex-row max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
             <button
               onClick={filterArticles}
-              className="border-b-2 p-1 mt-6 rounded focus:outline-none text-white bg-red-500 hover:bg-red-700"
+              className=" p-1 mr-1 mt-6  w-2/3 rounded focus:outline-none text-white bg-blue-500 hover:bg-blue-700"
             >
               Search
+            </button>
+            <button
+              onClick={clearSearch}
+              className="border p-1 mt-6 w-2/1 rounded border-blue-500 hover:text-white   hover:bg-blue-500"
+            >
+              Clear
             </button>
           </span>
         </div>

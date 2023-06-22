@@ -76,11 +76,18 @@ export function Profile() {
       apiClient.get("user/details").then(({ data: response }) => {
         if (response.status === "success") {
           setUser(response.data.user);
-          console.log();
           if (response.data.userSetting) {
-            setSources(response.data.userSetting.source.toString());
-            setSelectedCategory(response.data.userSetting.category);
-            setAuthors(response.data.userSetting.author.toString());
+            setSources(
+              response.data.userSetting.source
+                ? response.data.userSetting.source.toString()
+                : ""
+            );
+            setSelectedCategory(response.data.userSetting.category ?? []);
+            setAuthors(
+              response.data.userSetting.author
+                ? response.data.userSetting.author.toString()
+                : ""
+            );
           }
         }
       });

@@ -43,5 +43,5 @@ export function stringToArray(
   if (!text) {
     return null;
   }
-  return text.split(separator).map((item) => item.replace(/ /g, ""));
+  return text.split(separator).map((item) => item.trim());
 }
