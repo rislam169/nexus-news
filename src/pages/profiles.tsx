@@ -165,7 +165,7 @@ export function Profile() {
         <Divider variant="middle" sx={{ width: "100%", margin: "3" }} />
 
         <Typography variant="h5" fontWeight="bold" marginTop="2em">
-          Personilzed Newa Feed Setting
+          Personilzed News Preference
         </Typography>
 
         {message &&

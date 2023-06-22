@@ -77,7 +77,11 @@ export const fetchArticle = createAsyncThunk(
     toDate,
   }: FetchArticleProps): Promise<FetchArticleResult> => {
     const { data } = await apiClient.post("/articles", {
-      params: { category, searchKey, source, fromDate, toDate },
+      category,
+      searchKey,
+      source,
+      fromDate,
+      toDate,
     });
 
     return { fetchedArticles: data.data };

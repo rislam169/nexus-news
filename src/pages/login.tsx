@@ -14,6 +14,7 @@ import apiClient from "../api-client";
 import { Alert } from "@mui/material";
 import Header from "../components/header/header";
 import { useCustomJs } from "../hooks/use-custom-js";
+import { featureOnDevelopment } from "../utils";
 
 export default function Login(): JSX.Element {
   useCustomJs();
@@ -109,7 +110,7 @@ export default function Login(): JSX.Element {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" onClick={featureOnDevelopment}>
                 Forgot password?
               </Link>
             </Grid>
