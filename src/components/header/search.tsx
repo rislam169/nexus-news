@@ -38,11 +38,20 @@ export default function Search() {
   }
 
   function clearSearch(): void {
+    dispatch(
+      fetchArticle({
+        searchKey: "",
+        source: "",
+        category: "",
+        fromDate: "",
+        toDate: "",
+      })
+    );
+
     setSource("");
     setSelectedCategory("");
     setFromDate("");
     setToDate("");
-    filterArticles();
   }
 
   return (
@@ -59,6 +68,12 @@ export default function Search() {
         } search_dropdown absolute left-auto right-0 top-full z-50 text-left shadow-2xl bg-white text-black border border-gray-200 mt-1 p-3`}
       >
         <div className="flex flex-row flex-wrap w-full relative">
+          <button
+            onClick={() => setIsSearchVisible(false)}
+            className="bg-gray-300 absolute right-0 p-1 rounded-full"
+          >
+            <img src={crossIcon} alt="Cancel" />
+          </button>
           <span className="flex flex-col max-w-full w-full sm:w-1/2 md:w-1/3 lg:w-1/4  m-3">
             <label htmlFor="from_date">From</label>
             <input
