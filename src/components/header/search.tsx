@@ -22,8 +22,10 @@ export default function Search() {
   const debouncedSearchKey = useDebounce(searchKey, DEBOUNCE_TIME);
 
   useEffect(() => {
-    dispatch(fetchArticle({ searchKey: debouncedSearchKey }));
-  }, [debouncedSearchKey, dispatch]);
+    if (searchKey) {
+      dispatch(fetchArticle({ searchKey: debouncedSearchKey }));
+    }
+  }, [debouncedSearchKey, dispatch, searchKey]);
 
   function filterArticles(): void {
     dispatch(

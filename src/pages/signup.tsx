@@ -125,7 +125,7 @@ export default function Signup(): JSX.Element {
           <Grid container>
             <Grid item xs></Grid>
             <Grid item>
-              <Link component={NavLink} to="/signin" variant="body2">
+              <Link component={NavLink} to="/login" variant="body2">
                 {"Already have an account? Log In"}
               </Link>
             </Grid>

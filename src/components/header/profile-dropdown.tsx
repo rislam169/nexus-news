@@ -27,9 +27,9 @@ export default function ProfileDropdown() {
     setAnchorEl(null);
   }
 
-  function navToProfile(): void {
+  function navigateTo(to: string): void {
     handleClose();
-    navigate("/profile");
+    navigate(to);
   }
 
   function userLogout(): void {
@@ -94,15 +94,25 @@ export default function ProfileDropdown() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={navToProfile}>
-          <UserAvatar /> Profile
-        </MenuItem>
         {token && (
-          <MenuItem onClick={userLogout}>
+          <>
+            <MenuItem onClick={() => navigateTo("/profile")}>
+              <UserAvatar /> Profile
+            </MenuItem>
+            <MenuItem onClick={userLogout}>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          </>
+        )}
+        {!token && (
+          <MenuItem onClick={() => navigateTo("/login")}>
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>
-            Logout
+            Login
           </MenuItem>
         )}
       </Menu>

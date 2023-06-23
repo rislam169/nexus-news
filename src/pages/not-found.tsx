@@ -15,7 +15,7 @@ export default function NotFound() {
         <Typography component="h1" variant="h5">
           The page you are looking for is not available
         </Typography>
-        <Link component={NavLink} to="/signin" variant="h5">
+        <Link component={NavLink} to="/" variant="h5">
           Home
         </Link>
       </Box>

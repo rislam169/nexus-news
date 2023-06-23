@@ -32,7 +32,7 @@ export default function Login(): JSX.Element {
       password: passwordRef.current.value,
     };
 
-    // Send signin request
+    // Send login request
     apiClient
       .post("/login", userData)
       .then(({ data }) => {
