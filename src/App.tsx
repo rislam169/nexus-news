@@ -14,11 +14,7 @@ function App() {
     <div className="text-gray-700 pt-9 sm:pt-10">
       <Header />
 
-      <main id="content">
-        {/* <Category /> */}
-
-        <ArticleSection />
-      </main>
+      <ArticleSection />
 
       <Footer />
 

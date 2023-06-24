@@ -20,8 +20,10 @@ apiClient.interceptors.response.use(
     const { response } = error;
     if (response.status === 401) {
       localStorage.removeItem("ACCESS_TOKEN");
+      // TODO: Use more sophisticated error handling
       console.log(response);
     } else if (response.status === 404) {
+      // TODO: Use more sophisticated error handling
       console.log(response);
     }
 

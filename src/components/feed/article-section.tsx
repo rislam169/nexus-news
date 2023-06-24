@@ -43,7 +43,7 @@ export default function ArticleSection() {
   }
 
   return (
-    <>
+    <main id="content">
       {categorizedArticleList.map((newSection, index) => {
         return (
           <NewsCategorySection
@@ -54,6 +54,6 @@ export default function ArticleSection() {
           />
         );
       })}
-    </>
+    </main>
   );
 }
