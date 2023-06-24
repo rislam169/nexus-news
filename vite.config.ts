@@ -1,3 +1,5 @@
+/// <reference types="vitest"/>
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -9,5 +11,10 @@ export default defineConfig({
       usePolling: true,
     },
     host: true, // needed for the Docker Container port mapping to work
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./test/setupTests.ts",
   },
 });
