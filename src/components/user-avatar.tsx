@@ -15,5 +15,5 @@ export default function UserAvatar({
     );
   }
 
-  return <Avatar>{createInitial("12")}</Avatar>;
+  return <Avatar>{createInitial(name)}</Avatar>;
 }

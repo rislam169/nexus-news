@@ -5,8 +5,9 @@ export const Categories = [
     isFeatured: true,
   },
   {
-    title: "Health",
-    description: "The state of being free from illness or injury.",
+    title: "Business",
+    description:
+      "Making one's living or making money by producing or buying and selling products",
   },
   {
     title: "Science",

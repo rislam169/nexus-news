@@ -83,10 +83,10 @@ describe("utils", () => {
   // Test stringToArray function
   describe("stringToArray", () => {
     test.each`
-      string              | separator | expected
-      ${"Health,Science"} | ${","}    | ${["Health", "Science"]}
-      ${"Health#Science"} | ${"#"}    | ${["Health", "Science"]}
-      ${"Health/Science"} | ${"/"}    | ${["Health", "Science"]}
+      string                | separator | expected
+      ${"Business,Science"} | ${","}    | ${["Business", "Science"]}
+      ${"Business#Science"} | ${"#"}    | ${["Business", "Science"]}
+      ${"Business/Science"} | ${"/"}    | ${["Business", "Science"]}
     `(
       "Splits $string using $separator as separator",
       ({ string, separator, expected }) => {
