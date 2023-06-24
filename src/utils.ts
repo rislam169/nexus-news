@@ -30,10 +30,18 @@ export function reformatArticles(
 
 /** Creates initial for name */
 export function createInitial(name: string): string {
-  return name
-    .split(" ")
-    .map((str) => str[0])
-    .join("");
+  let initials = "";
+  const maxDigits = 2;
+  if (!name) {
+    return "";
+  }
+
+  const split = name.trim().split(" ");
+  initials =
+    split.length >= 2
+      ? split[0][0] + split[1][0]
+      : name.substring(0, maxDigits);
+  return initials.toLocaleUpperCase();
 }
 
 /** Converts string to array trimming invidual string*/
